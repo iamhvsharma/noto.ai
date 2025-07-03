@@ -1,1 +1,2 @@
-"Noto AI: An AI Note taking application" 
+# NOTO AI
+AI Powered Note taking app.
