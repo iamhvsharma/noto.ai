@@ -4,12 +4,14 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "./DarkMode";
-import { Menu, X } from "lucide-react";
+import { LogIn, Menu, X } from "lucide-react";
+import Logout from "./Auth/Logout";
+import Login from "./Auth/Login";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const user = null;
+  const user = 0;
 
   return (
     <header className="w-full px-6 py-4 border-b border-zinc-200 dark:border-white/10 backdrop-blur-sm bg-white/70 dark:bg-black/70">
@@ -26,9 +28,8 @@ const Header = () => {
             Watch demo
           </Button>
 
-          <Button variant="outline" className="text-sm">
-            {user ? "Logout" : "Login"}
-          </Button>
+            {user ? <Logout /> : <Login />}
+        
         </div>
 
         {/* Mobile Menu Button */}
@@ -49,9 +50,7 @@ const Header = () => {
           <Button variant="ghost" className="w-full justify-start text-sm">
             Watch demo
           </Button>
-          <Button variant="ghost" className="w-full justify-start text-sm">
-            {user ? "Logout" : "Login"}
-          </Button>
+          {user ? <Logout /> : <Login />}
         </div>
       )}
     </header>
