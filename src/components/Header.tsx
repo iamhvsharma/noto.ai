@@ -1,47 +1,53 @@
 "use client";
 
-import Link from "next/link";
 import React, { useState } from "react";
-import { Button } from "./ui/button";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ModeToggle } from "./DarkMode";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="w-full border-b sticky top-0 z-50">
-      <div className="flex justify-between items-center px-4 py-3 sm:px-6 md:px-10 lg:px-20">
+    <header className="w-full px-6 py-4 border-b border-zinc-200 dark:border-white/10 backdrop-blur-sm bg-white/70 dark:bg-black/70">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          {/* <Image src="/logo.png" alt="logo" width={40} height={40} /> */}
-          <h1 className="text-xl sm:text-2xl font-bold text-black dark:text-white px-2 py-1 rounded-md">
-            Noto.ai
-          </h1>
+        <div className="flex items-center space-x-4">
+          <span className="text-xl font-bold">Noto.ai</span>
         </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-4">
-          {/* Add more nav links here if needed */}
-          <Button variant="outline">Sign in</Button>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-4">
+          <ModeToggle />
+          <Button variant="outline" className="text-sm">
+            Watch demo
+          </Button>
+          <Button variant="outline" className="text-sm">
+            Login
+          </Button>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden">
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center space-x-2">
+          <ModeToggle />
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="focus:outline-none"
+            className="p-2 rounded-md hover:bg-muted"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden px-4 pb-4">
-          {/* Add more nav items here if needed */}
-          <Button variant="outline" className="w-full">
-            Sign in
+        <div className="md:hidden mt-4 flex flex-col items-start gap-3 px-6">
+          <Button variant="ghost" className="w-full justify-start text-sm">
+            Watch demo
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-sm">
+            Login
           </Button>
         </div>
       )}
