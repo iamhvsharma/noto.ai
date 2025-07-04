@@ -5,8 +5,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "./DarkMode";
 import { LogIn, Menu, X } from "lucide-react";
-import Logout from "./Auth/Logout";
-import Login from "./Auth/Login";
+import LogoutButton from "./Auth/LogoutButton";
+import LoginButton from "./Auth/LoginButton";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,7 +28,7 @@ const Header = () => {
             Watch demo
           </Button>
 
-            {user ? <Logout /> : <Login />}
+            {user ? <LogoutButton /> : <LoginButton />}
         
         </div>
 
@@ -50,7 +50,7 @@ const Header = () => {
           <Button variant="ghost" className="w-full justify-start text-sm">
             Watch demo
           </Button>
-          {user ? <Logout /> : <Login />}
+          {user ? <LogoutButton /> : <LoginButton />}
         </div>
       )}
     </header>

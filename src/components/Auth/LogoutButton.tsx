@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-const Logout = () => {
+const LogoutButton = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter()
 
@@ -35,4 +35,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export default LogoutButton;
