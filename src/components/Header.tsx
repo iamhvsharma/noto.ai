@@ -9,6 +9,8 @@ import { Menu, X } from "lucide-react";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const user = null;
+
   return (
     <header className="w-full px-6 py-4 border-b border-zinc-200 dark:border-white/10 backdrop-blur-sm bg-white/70 dark:bg-black/70">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -23,8 +25,9 @@ const Header = () => {
           <Button variant="outline" className="text-sm">
             Watch demo
           </Button>
+
           <Button variant="outline" className="text-sm">
-            Login
+            {user ? "Logout" : "Login"}
           </Button>
         </div>
 
@@ -47,7 +50,7 @@ const Header = () => {
             Watch demo
           </Button>
           <Button variant="ghost" className="w-full justify-start text-sm">
-            Login
+            {user ? "Logout" : "Login"}
           </Button>
         </div>
       )}
