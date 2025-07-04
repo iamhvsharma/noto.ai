@@ -9,10 +9,14 @@ interface FeatureProps {
 const Features = ({ title, description }: FeatureProps) => {
   return (
     <Card className="w-full h-full bg-background border border-border shadow-md hover:shadow-lg transition-shadow rounded-xl">
-      <CardHeader>
-        <CardTitle className="text-lg font-semibold text-foreground">{title}</CardTitle>
+      <CardHeader className="-mb-6">
+        <CardTitle className="text-lg font-semibold text-foreground">
+          {title}
+        </CardTitle>
       </CardHeader>
-      <CardContent className="text-sm text-muted-foreground">{description}</CardContent>
+      <CardContent className="text-sm text-muted-foreground">
+        {description}
+      </CardContent>
     </Card>
   );
 };

@@ -31,12 +31,14 @@ const Landing = () => {
     <div className="w-full">
       <Hero />
 
-      <section className="w-full bg-background px-6 md:px-12 lg:px-24 py-16">
-        <h2 className="text-center text-3xl font-bold text-foreground mb-10">
-          Features that Boost Your Productivity
-        </h2>
+      <section className="w-full flex items-center flex-col bg-background px-6 md:px-12 lg:px-24 py-16">
+        <div>
+          <h2 className="text-center text-3xl font-bold text-foreground mb-10">
+            Features that Boost Your Productivity
+          </h2>
+        </div>
 
-        <div className="w-1/2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 ">
+        <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-8 ">
           {features.map((feature, index) => (
             <Features
               key={index}
