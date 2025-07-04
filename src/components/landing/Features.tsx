@@ -10,11 +10,11 @@ const Features = ({ title, description }: FeatureProps) => {
   return (
     <Card className="w-full h-full bg-background border border-border shadow-md hover:shadow-lg transition-shadow rounded-xl">
       <CardHeader className="-mb-6">
-        <CardTitle className="text-lg font-semibold text-foreground">
+        <CardTitle className="text-xl font-semibold text-foreground">
           {title}
         </CardTitle>
       </CardHeader>
-      <CardContent className="text-sm text-muted-foreground">
+      <CardContent className="lg:text-lg sm:text-md text-sm text-muted-foreground">
         {description}
       </CardContent>
     </Card>

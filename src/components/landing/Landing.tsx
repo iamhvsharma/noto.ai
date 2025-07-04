@@ -31,10 +31,10 @@ const Landing = () => {
     <div className="w-full">
       <Hero />
 
-      <section className="w-full flex items-center flex-col bg-background px-6 md:px-12 lg:px-24 py-16">
+      <section className="w-full min-h-screen flex items-center flex-col bg-background px-6 md:px-12 lg:px-24 py-16">
         <div>
-          <h2 className="text-center text-3xl font-bold text-foreground mb-10">
-            Features that Boost Your Productivity
+          <h2 className="text-center text-4xl font-bold text-foreground mb-10">
+            Features
           </h2>
         </div>
 
