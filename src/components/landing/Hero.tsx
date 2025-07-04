@@ -7,10 +7,7 @@ const Hero = () => {
       {/* 🔵 Enhanced Blurred Background Blobs */}
       <div className="absolute top-[-150px] left-[-150px] w-[400px] h-[400px] bg-purple-400/50 dark:bg-purple-700/30 rounded-full filter blur-[120px] z-0" />
       <div className="absolute bottom-[-150px] right-[-150px] w-[400px] h-[400px] bg-pink-400/50 dark:bg-pink-700/30 rounded-full filter blur-[120px] z-0" />
-
-      {/* 🌀 Noise Overlay (Optional - requires public/noise.png) */}
-      <div className="absolute inset-0 bg-[url('/noise.png')] bg-repeat opacity-20 dark:opacity-10 pointer-events-none z-0" />
-
+      
       {/* 🎯 Main Content */}
       <div className="max-w-4xl mx-auto px-2 z-10">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-900 dark:text-white">
