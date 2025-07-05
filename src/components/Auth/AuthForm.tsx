@@ -8,21 +8,43 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
+import { toast } from "sonner";
 
 interface Props {
   type: "login" | "signup";
 }
 
 const AuthForm = ({ type }: Props) => {
+  const [isPending, startTransition] = useTransition();
+
   const isLoginForm = type === "login";
 
   const router = useRouter();
 
   const handleSubmit = (formData: FormData) => {
-    console.log("Form Submitted");
-  };
+    startTransition(async () => {
+      const email = formData.get("email") as string;
+      const password = formData.get("password") as string;
 
-  const [isPending, startTransition] = useTransition();
+      let errorMessage;
+      let toastContent;
+
+      if (isLoginForm) {
+        errorMessage = (await loginAction(email, password)).errorMessage;
+        toastContent = "You have been successfully logged in";
+      } else {
+        errorMessage = (await signupAction(email, password)).errorMessage;
+        toastContent = "Check your email for confirmation link";
+      }
+
+      if (!errorMessage) {
+        toast.success(toastContent);
+        router.replace("/")
+      } else {
+        toast.error(toastContent);
+      }
+    });
+  };
 
   return (
     <form action={handleSubmit}>
@@ -66,7 +88,7 @@ const AuthForm = ({ type }: Props) => {
             : "Already have an account?"}{" "}
           <Link
             href={isLoginForm ? "/signup" : "/login"}
-            className={`text-blue-500 underline ${isPending ? "pointer-events-none opacity-50": ""}`}
+            className={`text-blue-500 underline ${isPending ? "pointer-events-none opacity-50" : ""}`}
           >
             {isLoginForm ? "Signup" : "Login"}
           </Link>
