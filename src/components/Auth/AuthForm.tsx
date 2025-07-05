@@ -30,17 +30,17 @@ const AuthForm = ({ type }: Props) => {
 
       if (isLoginForm) {
         errorMessage = (await loginAction(email, password)).errorMessage;
-        toastContent = `$ {errorMessage}`;
+        toastContent = "You have successfully logged in.";
       } else {
         errorMessage = (await signupAction(email, password)).errorMessage;
         toastContent = "Check your email for confirmation link";
       }
 
-      if (!errorMessage) {
+      if (errorMessage) {
+        toast.error(errorMessage);
+      } else {
         toast.success(toastContent);
         router.replace("/");
-      } else {
-        toast.error(toastContent);
       }
     });
   };
