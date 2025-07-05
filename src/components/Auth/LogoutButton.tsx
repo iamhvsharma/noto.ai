@@ -31,7 +31,7 @@ const LogoutButton = () => {
       variant="outline"
       onClick={handleLogout}
       disabled={loading}
-      className="w-24"
+      className="w-full md:w-24 lg:w:24"
     >
       {loading ? <Loader2 className="animate-spin" /> : "Logout"}
     </Button>

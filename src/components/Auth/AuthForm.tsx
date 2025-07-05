@@ -17,9 +17,7 @@ interface Props {
 
 const AuthForm = ({ type }: Props) => {
   const [isPending, startTransition] = useTransition();
-
   const isLoginForm = type === "login";
-
   const router = useRouter();
 
   const handleSubmit = (formData: FormData) => {
@@ -32,7 +30,7 @@ const AuthForm = ({ type }: Props) => {
 
       if (isLoginForm) {
         errorMessage = (await loginAction(email, password)).errorMessage;
-        toastContent = "You have been successfully logged in";
+        toastContent = `$ {errorMessage}`;
       } else {
         errorMessage = (await signupAction(email, password)).errorMessage;
         toastContent = "Check your email for confirmation link";
@@ -40,7 +38,7 @@ const AuthForm = ({ type }: Props) => {
 
       if (!errorMessage) {
         toast.success(toastContent);
-        router.replace("/")
+        router.replace("/");
       } else {
         toast.error(toastContent);
       }
@@ -49,8 +47,8 @@ const AuthForm = ({ type }: Props) => {
 
   return (
     <form action={handleSubmit}>
-      <CardContent className="grid w-full items-center gap-4">
-        <div className="flex flex-col space-y-1.5">
+      <CardContent className="space-y-4 sm:space-y-5 px-4 sm:px-6 pt-2 pb-0">
+        <div className="flex flex-col space-y-2">
           <Label htmlFor="email">Email</Label>
           <Input
             id="email"
@@ -59,9 +57,10 @@ const AuthForm = ({ type }: Props) => {
             type="email"
             required
             disabled={isPending}
+            className="w-full"
           />
         </div>
-        <div className="flex flex-col space-y-1.5">
+        <div className="flex flex-col space-y-2">
           <Label htmlFor="password">Password</Label>
           <Input
             id="password"
@@ -70,26 +69,29 @@ const AuthForm = ({ type }: Props) => {
             type="password"
             required
             disabled={isPending}
+            className="w-full"
           />
         </div>
       </CardContent>
-      <CardFooter className="mt-4 flex flex-col gap-6">
-        <Button className="w-full">
+      <CardFooter className="mt-4 flex flex-col gap-4 sm:gap-5 px-4 sm:px-6 pb-6">
+        <Button className="w-full" disabled={isPending}>
           {isPending ? (
-            <Loader2 className="animate-spin" />
+            <Loader2 className="animate-spin h-4 w-4" />
           ) : isLoginForm ? (
             "Login"
           ) : (
             "Signup"
           )}
         </Button>
-        <p className="text-xs">
+        <p className="text-center text-sm">
           {isLoginForm
             ? "Don't have an account yet?"
             : "Already have an account?"}{" "}
           <Link
             href={isLoginForm ? "/signup" : "/login"}
-            className={`text-blue-500 underline ${isPending ? "pointer-events-none opacity-50" : ""}`}
+            className={`text-blue-500 underline transition-opacity ${
+              isPending ? "pointer-events-none opacity-50" : ""
+            }`}
           >
             {isLoginForm ? "Signup" : "Login"}
           </Link>

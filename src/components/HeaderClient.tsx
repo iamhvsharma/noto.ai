@@ -7,6 +7,7 @@ import { ModeToggle } from "./DarkMode";
 import { LogIn, Menu, X } from "lucide-react";
 import LogoutButton from "./Auth/LogoutButton";
 import LoginButton from "./Auth/LoginButton";
+import SignupButton from "./Auth/SignupButton";
 
 interface HeaderClientProps {
   user: any; // Replace `any` with your actual user type if you have one
@@ -26,9 +27,7 @@ const HeaderClient: React.FC<HeaderClientProps> = ({ user }) => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-4">
           <ModeToggle />
-          <Button variant="outline" className="text-sm">
-            Watch demo
-          </Button>
+          <SignupButton />
           {user ? <LogoutButton /> : <LoginButton />}
         </div>
 
@@ -46,10 +45,8 @@ const HeaderClient: React.FC<HeaderClientProps> = ({ user }) => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden mt-4 flex flex-col items-start gap-3 px-6">
-          <Button variant="ghost" className="w-full justify-start text-sm">
-            Watch demo
-          </Button>
+        <div className="md:hidden mt-4 flex items-center flex-col justify-around gap-3 px-6">
+          <SignupButton />
           {user ? <LogoutButton /> : <LoginButton />}
         </div>
       )}
