@@ -1,5 +1,6 @@
 "use server";
 
+import { prisma } from "@/db/prisma";
 import { handleError } from "@/lib/utils";
 import { createClient } from "@/utils/supabase/server";
 
@@ -32,7 +33,12 @@ export const signupAction = async (email: string, password: string) => {
     const userId = data.user?.id;
     if (!userId) throw new Error("Error signing up");
 
-    // Add user to our database table TODO
+    await prisma.user.create({
+      data: {
+        id: userId,
+        email,
+      },
+    });
 
     return { errorMessage: null };
   } catch (error) {
