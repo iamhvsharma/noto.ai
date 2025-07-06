@@ -25,7 +25,16 @@ export default function RootLayout({
         >
           <Header />
           {children}
-          <Toaster />
+          <Toaster
+            className={`
+                fixed z-[9999]
+                w-[90%] max-w-sm px-4
+
+                left-1/2 -translate-x-1/2 bottom-[env(safe-area-inset-bottom,4.5rem)]
+
+                sm:left-auto sm:right-5 sm:translate-x-0 sm:bottom-5 sm:w-auto sm:mb-4
+  `}
+          />
         </ThemeProvider>
       </body>
     </html>
