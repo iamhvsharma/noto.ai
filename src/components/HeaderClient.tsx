@@ -7,7 +7,6 @@ import { Menu, X } from "lucide-react";
 import LogoutButton from "./Auth/LogoutButton";
 import LoginButton from "./Auth/LoginButton";
 import SignupButton from "./Auth/SignupButton";
-import { User } from "@prisma/client";
 
 interface HeaderClientProps {
   user: unknown;
