@@ -10,7 +10,7 @@ import SignupButton from "./Auth/SignupButton";
 import { User } from "@prisma/client";
 
 interface HeaderClientProps {
-  user: User | null;
+  user: unknown;
 }
 
 const HeaderClient: React.FC<HeaderClientProps> = ({ user }) => {
