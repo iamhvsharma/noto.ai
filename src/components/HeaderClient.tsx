@@ -26,7 +26,7 @@ const HeaderClient: React.FC<HeaderClientProps> = ({ user }) => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-4">
           <ModeToggle />
-          <SignupButton />
+          {user ? "" : <SignupButton />}
           {user ? <LogoutButton /> : <LoginButton />}
         </div>
 
@@ -45,7 +45,7 @@ const HeaderClient: React.FC<HeaderClientProps> = ({ user }) => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden mt-4 flex items-center flex-col justify-around gap-3 px-6">
-          <SignupButton />
+          {user ? "" : <SignupButton />}
           {user ? <LogoutButton /> : <LoginButton />}
         </div>
       )}
