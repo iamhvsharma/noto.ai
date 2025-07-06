@@ -2,15 +2,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { ModeToggle } from "./DarkMode";
-import { LogIn, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import LogoutButton from "./Auth/LogoutButton";
 import LoginButton from "./Auth/LoginButton";
 import SignupButton from "./Auth/SignupButton";
+import { User } from "@prisma/client";
 
 interface HeaderClientProps {
-  user: any; // Replace `any` with your actual user type if you have one
+  user: User | null;
 }
 
 const HeaderClient: React.FC<HeaderClientProps> = ({ user }) => {

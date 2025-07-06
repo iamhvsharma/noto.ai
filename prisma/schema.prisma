@@ -7,10 +7,17 @@ generator client {
     provider = "prisma-client-js"
 }
 
+enum Category {
+    WORK
+    PERSONAL
+    RESEARCH
+    MEETINGS
+    IDEAS
+}
+
 model User {
-    id    String  @id @default(uuid())
-    email String  @unique
-    name  String?
+    id    String @id @default(uuid())
+    email String @unique
     notes Note[]
 
     createdAt DateTime @default(now())
@@ -19,6 +26,8 @@ model User {
 
 model Note {
     id        String   @id @default(uuid())
+    title     String
+    category  Category?
     text      String
     authorId  String
     author    User     @relation(fields: [authorId], references: [id])
